@@ -78,10 +78,72 @@ class SiderDemo extends Component {
           >
             <div className="content">
               <div className="content-head">
-                <div className="card card1"></div>
-                <div className="card card2"></div>
-                <div className="card card3"></div>
-                <div className="card card4"></div>
+                <div className="card card1">
+                  <div className="card-top">
+                    <span>每周销售</span>
+                    <span><LineChartOutlined /></span>
+                  </div>
+                  <div className="card-center">
+                    ￥ 30,000
+                  </div>
+                  <div className="card-bottom">
+                    增加10%
+                  </div>
+                </div>
+                <div className="card card2">
+                  <div className="card-top">
+                    <span>每周订单</span>
+                    <span><LineChartOutlined /></span>
+                  </div>
+                  <div className="card-center">
+                    1,260
+                  </div>
+                  <div className="card-bottom">
+                    增加3%
+                  </div>
+                </div>
+                <div className="card card3">
+                  <div className="card-top">
+                    <span>在线访问量</span>
+                    <span><LineChartOutlined /></span>
+                  </div>
+                  <div className="card-center">
+                    3,650
+                  </div>
+                  <div className="card-bottom">
+                    减少5%
+                  </div>
+                </div>
+                <div className="card card4">
+                  <div className="card-top">
+                    <span>新增用户</span>
+                    <span><LineChartOutlined /></span>
+                  </div>
+                  <div className="card-center">
+                    1,328
+                  </div>
+                  <div className="card-bottom">
+                    增加8%
+                  </div>
+                </div>
+              </div>
+              <div className="content-conter">
+                <div className="content-left">
+                  <span>每日新增订单</span>
+                </div>
+                <div className="content-right">
+                  <span>订单概述</span>
+
+                </div>
+              </div>
+              <div className="content-conter">
+                <div className="content-left">
+                  <span>年销售额</span>
+                </div>
+                <div className="content-right">
+                  <span>实时战报</span>
+
+                </div>
               </div>
             </div>
           </Content>
