@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Layout, Menu } from 'antd';
+import Echarts from './compenents/ECharts'
 import {
   MenuUnfoldOutlined,
   MenuFoldOutlined,
@@ -16,6 +17,9 @@ import './index.scss'
 const { Header, Sider, Content } = Layout;
 
 class SiderDemo extends Component {
+  // constructor(props: string) {
+  //   super(props)
+  // }
   state = {
     collapsed: false,
   };
@@ -130,6 +134,9 @@ class SiderDemo extends Component {
               <div className="content-conter">
                 <div className="content-left">
                   <span>每日新增订单</span>
+                  <div >
+                    <Echarts />
+                  </div>
                 </div>
                 <div className="content-right">
                   <span>订单概述</span>
@@ -139,6 +146,9 @@ class SiderDemo extends Component {
               <div className="content-conter">
                 <div className="content-left">
                   <span>年销售额</span>
+                  <div >
+                    <Echarts />
+                  </div>
                 </div>
                 <div className="content-right">
                   <span>实时战报</span>
@@ -154,4 +164,3 @@ class SiderDemo extends Component {
 
 }
 export default SiderDemo
-    // ReactDOM.render(<SiderDemo />, mountNode);
