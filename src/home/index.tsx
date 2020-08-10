@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Layout, Menu } from 'antd';
+import { Layout, Menu, Progress } from 'antd';
 import Echarts from './compenents/ECharts'
 import {
   MenuUnfoldOutlined,
@@ -16,12 +16,184 @@ import {
 import './index.scss'
 const { Header, Sider, Content } = Layout;
 
-class SiderDemo extends Component {
-  // constructor(props: string) {
-  //   super(props)
-  // }
+class SiderDemo extends Component<any> {
+  [x: string]: any
+  child: any = {}  //主要加这个
+  onRef = (ref: any) => {
+    this.child = ref
+  }
   state = {
     collapsed: false,
+    chartId1: 'chartId1',
+    chartId2: 'chartId2',
+    option1: {
+      title: {
+        text: '每日销售订单'
+      },
+      tooltip: {
+        trigger: 'axis',
+        axisPointer: {
+          type: 'cross',
+          label: {
+            backgroundColor: '#feb197'
+          }
+        }
+      },
+
+      toolbox: {
+        feature: {
+          saveAsImage: {}
+        }
+      },
+      dataRange: {
+        color: ['#feb197'],//颜色 
+      },
+      axisLine: {            // 坐标轴线
+        show: false,        // 默认显示，属性show控制显示与否
+        lineStyle: {       // 属性lineStyle控制线条样式
+          color: '#ccc',
+          width: 1,
+          type: 'solid'
+        }
+      },
+      grid: {
+        left: '3%',
+        right: '4%',
+        bottom: '3%',
+        containLabel: true
+      },
+      xAxis: [
+        {
+          type: 'category',
+          boundaryGap: false,
+          data: ['10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20'],
+          axisTick: {
+            show: false,
+          }
+        }
+      ],
+      yAxis: [
+        {
+          type: 'value',
+          axisTick: {
+            show: false,
+          }
+        }
+      ],
+      series: [
+        {
+          name: '日销量',
+          type: 'line',
+          symbol: 'none', //这句就是去掉点的
+          smooth: true, //这句就是让曲线变平滑的
+          stack: '总量',
+          label: {
+            normal: {
+              show: true,
+              position: 'top'
+            }
+          },
+          areaStyle: {
+            normal: {
+              color: '#feb197' //改变区域颜色
+            }
+          },
+          itemStyle: {
+            normal: {
+              color: '#feb197', //改变折线点的颜色
+              lineStyle: {
+                color: '#feb197' //改变折线颜色
+              }
+            }
+          },
+          data: [200, 150, 165, 250, 330, 300, 160, 68, 600, 360, 350]
+        }
+      ]
+    },
+    option2: {
+      title: {
+        text: '年销售额'
+      },
+      tooltip: {
+        trigger: 'axis',
+        axisPointer: {
+          type: 'cross',
+          label: {
+            backgroundColor: '#8ce5d9'
+          }
+        }
+      },
+
+      toolbox: {
+        feature: {
+          saveAsImage: {}
+        }
+      },
+      dataRange: {
+        color: ['#8ce5d9'],//颜色 
+      },
+      axisLine: {            // 坐标轴线
+        show: false,        // 默认显示，属性show控制显示与否
+        lineStyle: {       // 属性lineStyle控制线条样式
+          color: '#ccc',
+          width: 1,
+          type: 'solid'
+        }
+      },
+      grid: {
+        left: '3%',
+        right: '4%',
+        bottom: '3%',
+        containLabel: true
+      },
+      xAxis: [
+        {
+          type: 'category',
+          boundaryGap: false,
+          data: ['2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'],
+          axisTick: {
+            show: false,
+          }
+        }
+      ],
+      yAxis: [
+        {
+          type: 'value',
+          axisTick: {
+            show: false,
+          }
+        }
+      ],
+      series: [
+        {
+          name: '年销售额',
+          type: 'line',
+          symbol: 'none', //这句就是去掉点的
+          smooth: true, //这句就是让曲线变平滑的
+          stack: '总量',
+          label: {
+            normal: {
+              show: true,
+              position: 'top'
+            }
+          },
+          areaStyle: {
+            normal: {
+              color: '#8ce5d9' //改变区域颜色
+            }
+          },
+          itemStyle: {
+            normal: {
+              color: '#8ce5d9', //改变折线点的颜色
+              lineStyle: {
+                color: '#8ce5d9' //改变折线颜色
+              }
+            }
+          },
+          data: [38000, 55000, 60901, 41934, 43290, 61330, 101320, 111563, 80435, 58003, 60000]
+        }
+      ]
+    }
   };
 
   toggle = () => {
@@ -35,7 +207,7 @@ class SiderDemo extends Component {
         <Sider trigger={null} collapsible collapsed={this.state.collapsed}>
           <div className="logo" >
             {/* <img className="logo-home" src="../images/logo.jpg" alt=""/> */}
-            <h1 className="logo-name">熊猫家私</h1>
+            <h1 className="logo-name">xxx</h1>
           </div>
           <Menu theme="dark" mode="inline" defaultSelectedKeys={['1']}>
             <Menu.Item key="1" icon={<UserOutlined />}>
@@ -133,21 +305,33 @@ class SiderDemo extends Component {
               </div>
               <div className="content-conter">
                 <div className="content-left">
-                  <span>每日新增订单</span>
                   <div >
-                    <Echarts />
+                    <Echarts chartId={this.state.chartId1} option={this.state.option1} />
                   </div>
                 </div>
                 <div className="content-right">
                   <span>订单概述</span>
-
+                  <div>
+                    <h3>1620</h3>
+                    <span>总订单量（周）</span>
+                  </div>
+                  <div>
+                    <div className='online-methed'>
+                      <Progress percent={30} strokeWidth={20} strokeColor='#ca81ed' strokeLinecap='square'/>
+                    </div>
+                    <div className='underline-methed'>
+                      <Progress percent={30} />
+                    </div>
+                    <div className='savings-methed'>
+                      <Progress percent={30} />
+                    </div>
+                  </div>
                 </div>
               </div>
               <div className="content-conter">
                 <div className="content-left">
-                  <span>年销售额</span>
                   <div >
-                    <Echarts />
+                    <Echarts chartId={this.state.chartId2} option={this.state.option2} />
                   </div>
                 </div>
                 <div className="content-right">
