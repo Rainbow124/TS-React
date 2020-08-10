@@ -12,18 +12,14 @@ interface Charts {
 }
 
 class EchartsTest extends Component<Charts> {
-    constructor(props: any) {
-        super(props)
-        // console.log(props)
 
-    }
 
     componentDidMount() {
         // 基于准备好的dom，初始化echarts实例
         let mainId = document.getElementById(this.props.chartId)
         let myChart = echarts.init(mainId as HTMLCanvasElement);
         // 绘制图表
-        
+
 
         myChart.setOption(this.props.option);
     }

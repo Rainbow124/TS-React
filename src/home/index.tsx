@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Layout, Menu, Progress } from 'antd';
 import Echarts from './compenents/ECharts'
+import RTable from './compenents/RTable'
 import {
   MenuUnfoldOutlined,
   MenuFoldOutlined,
@@ -310,20 +311,26 @@ class SiderDemo extends Component<any> {
                   </div>
                 </div>
                 <div className="content-right">
-                  <span>订单概述</span>
-                  <div>
-                    <h3>1620</h3>
+                  <span className='side-title'>订单概述</span>
+                  <div className='year-total'>
+                    <h1 className='amount'>1620</h1>
                     <span>总订单量（周）</span>
                   </div>
                   <div>
-                    <div className='online-methed'>
-                      <Progress percent={30} strokeWidth={20} strokeColor='#ca81ed' strokeLinecap='square'/>
+                    <div className='progress'>
+                      <h2>30%</h2>
+                      <span>在线订购</span>
+                      <Progress percent={30} showInfo={false} strokeWidth={20} strokeColor='#ca81ed' strokeLinecap='square' />
                     </div>
-                    <div className='underline-methed'>
-                      <Progress percent={30} />
+                    <div className='progress'>
+                      <h2>50%</h2>
+                      <span>离线订购</span>
+                      <Progress percent={50} showInfo={false} strokeWidth={20} strokeColor='#8ce5d9' strokeLinecap='square' />
                     </div>
-                    <div className='savings-methed'>
-                      <Progress percent={30} />
+                    <div className='progress'>
+                      <h2>20%</h2>
+                      <span>年度储蓄</span>
+                      <Progress percent={20} showInfo={false} strokeWidth={20} strokeColor='#feb197' strokeLinecap='square' />
                     </div>
                   </div>
                 </div>
@@ -335,8 +342,22 @@ class SiderDemo extends Component<any> {
                   </div>
                 </div>
                 <div className="content-right">
-                  <span>实时战报</span>
-
+                  <div className='real-time-information'>
+                    <div>
+                      <span className='side-title'>实时战报</span>
+                      <div className='order-quantities'>
+                        <h1 className='amount'>39</h1>
+                        <span>今日下单数</span>
+                      </div>
+                    </div>
+                    <div>
+                      <Progress type="circle" percent={30} strokeWidth={10} width={100} />
+                      <p className='percent'>下单转化率</p>
+                    </div>
+                  </div>
+                  <div className=''>
+                    <RTable />
+                  </div>
                 </div>
               </div>
             </div>
