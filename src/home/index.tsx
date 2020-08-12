@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 // import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { Progress } from 'antd';
 import {LineChartOutlined} from '@ant-design/icons';
-import Echarts from './compenents/ECharts'
-import RTable from './compenents/RTable'
+import Echarts from './components/ECharts'
+import RTable from './components/RTable'
 
 import './index.scss'
 

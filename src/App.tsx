@@ -16,6 +16,7 @@ import {
 import './App.scss';
 import SiderDemo from './home/index';
 import OrderList from './order/index';
+import Goods from './goods/index';
 
 const { Header, Sider, Content } = Layout;
 class App extends Component {
@@ -85,7 +86,7 @@ class App extends Component {
               >
                 <Route path='/home' component={SiderDemo}></Route>
                 <Route path='/order' component={OrderList}></Route>
-                <Route path='/goods' component={SiderDemo}></Route>
+                <Route path='/goods' component={Goods}></Route>
                 <Route path='/user' component={SiderDemo}></Route>
                 <Route path='/setting' component={SiderDemo}></Route>
                 <Route path='/statistics' component={SiderDemo}></Route>
