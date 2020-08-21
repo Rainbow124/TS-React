@@ -1,53 +1,57 @@
-import { Cascader } from 'antd';
 import React, { Component } from 'react';
+import { Form, Input, Col, Row } from 'antd';
 
-const options = [
-    {
-        value: 'zhejiang',
-        label: 'Zhejiang',
-        children: [
-            {
-                value: 'hangzhou',
-                label: 'Hangzhou',
-                children: [
-                    {
-                        value: 'xihu',
-                        label: 'West Lake',
-                    },
-                ],
-            },
-        ],
-    },
-    {
-        value: 'jiangsu',
-        label: 'Jiangsu',
-        children: [
-            {
-                value: 'nanjing',
-                label: 'Nanjing',
-                children: [
-                    {
-                        value: 'zhonghuamen',
-                        label: 'Zhong Hua Men',
-                    },
-                ],
-            },
-        ],
-    },
-];
+const layout = {
+    labelCol: { span: 8 },
+    wrapperCol: { span: 16 },
+};
+const tailLayout = {
+    wrapperCol: { offset: 8, span: 16 },
+};
 
-function onChange(value: any) {
-    console.log(value);
-}
-class RCascader extends Component {
+
+class RCascader extends Component<any, any> {
+
+    onFinishFailed = (errorInfo: any) => {
+        console.log('Failed:', errorInfo);
+    };
+    onFinish = (values: any) => {
+        console.log('Success:', values);
+    };
     render() {
+
         return (
             <div>
-                <Cascader
-                    defaultValue={['zhejiang', 'hangzhou', 'xihu']}
-                    options={options}
-                    onChange={onChange}
-                />,
+                <Form
+                    {...layout}
+                    name="basic"
+                    initialValues={{ remember: true }}
+                // onFinish={this.onFinish()}
+                // onFinishFailed={this.onFinishFailed()}
+                >
+                    <Row gutter={8}>
+                        <Col span={12}>
+                            <Form.Item
+                                label="Username"
+                                name="username"
+                                rules={[{ required: true, message: 'Please input your username!' }]}
+                            >
+                                <Input />
+                            </Form.Item>
+                        </Col>
+                    </Row>
+                    <Row gutter={8}>
+                        <Col span={12}>
+                            <Form.Item
+                                label="Password"
+                                name="password"
+                                rules={[{ required: true, message: 'Please input your password!' }]}
+                            >
+                                <Input.Password />
+                            </Form.Item>
+                        </Col>
+                    </Row>
+                </Form>
             </div>
         )
     }

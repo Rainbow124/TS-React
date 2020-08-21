@@ -8,21 +8,18 @@ const { Step } = Steps;
 const steps = [
     {
         title: '选择商品分类',
-        content: `${RCascader}`,
     },
     {
         title: '填写商品信息',
-        content: 'Second-content',
     },
     {
         title: '填写商品属性',
-        content: 'Last-content',
     },
     {
         title: '选择商品关联',
-        content: 'Last-content',
     },
 ];
+
 
 class GoodsSteps extends Component<any, any> {
     constructor(props: any) {
@@ -35,6 +32,9 @@ class GoodsSteps extends Component<any, any> {
     next() {
         const current = this.state.current + 1;
         this.setState({ current });
+        if (current === 0) {
+            // console.log(this.refs.s1)
+        }
     }
 
     prev() {
@@ -51,7 +51,21 @@ class GoodsSteps extends Component<any, any> {
                         <Step key={item.title} title={item.title} />
                     ))}
                 </Steps>
-                <div className="steps-content">{steps[current].content}</div>
+                <div className="steps-content">
+                    {
+                        (() => {
+                            if (current === 0) {
+                                return <RCascader />
+                            } else if (current === 1) {
+                                return <RCascader />
+                            } else if (current === 2) {
+                                return <RCascader />
+                            } else if(current === 3) {
+                                return <RCascader />
+                            }
+                        })()
+                    }
+                </div>
                 <div className="steps-action">
                     {current > 0 && (
                         <Button style={{ margin: '0 8px' }} onClick={() => this.prev()}>
@@ -64,7 +78,7 @@ class GoodsSteps extends Component<any, any> {
                         </Button>
                     )}
                     {current === steps.length - 1 && (
-                        <Button type="primary" onClick={() => message.success('')}>
+                        <Button type="primary" onClick={() => message.success('已完成提交')}>
                             完成
                         </Button>
                     )}
