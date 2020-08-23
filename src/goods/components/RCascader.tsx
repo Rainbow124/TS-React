@@ -47,7 +47,7 @@ class RCascader extends Component {
                     defaultValue={['zhejiang', 'hangzhou', 'xihu']}
                     options={options}
                     onChange={onChange}
-                />,
+                />
             </div>
         )
     }

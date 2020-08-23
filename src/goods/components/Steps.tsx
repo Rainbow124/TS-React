@@ -8,7 +8,7 @@ const { Step } = Steps;
 const steps = [
     {
         title: '选择商品分类',
-        content: `${RCascader}`,
+        content: 'First-content',
     },
     {
         title: '填写商品信息',
@@ -51,7 +51,11 @@ class GoodsSteps extends Component<any, any> {
                         <Step key={item.title} title={item.title} />
                     ))}
                 </Steps>
-                <div className="steps-content">{steps[current].content}</div>
+                <div className="steps-content">
+                    {steps[current].title === '选择商品分类'}
+                    {/* {steps} */}
+                    <RCascader></RCascader>
+                </div>
                 <div className="steps-action">
                     {current > 0 && (
                         <Button style={{ margin: '0 8px' }} onClick={() => this.prev()}>
