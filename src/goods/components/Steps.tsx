@@ -8,21 +8,18 @@ const { Step } = Steps;
 const steps = [
     {
         title: '选择商品分类',
-        content: 'First-content',
     },
     {
         title: '填写商品信息',
-        content: 'Second-content',
     },
     {
         title: '填写商品属性',
-        content: 'Last-content',
     },
     {
         title: '选择商品关联',
-        content: 'Last-content',
     },
 ];
+
 
 class GoodsSteps extends Component<any, any> {
     constructor(props: any) {
@@ -35,6 +32,9 @@ class GoodsSteps extends Component<any, any> {
     next() {
         const current = this.state.current + 1;
         this.setState({ current });
+        if (current === 0) {
+            // console.log(this.refs.s1)
+        }
     }
 
     prev() {
@@ -52,9 +52,19 @@ class GoodsSteps extends Component<any, any> {
                     ))}
                 </Steps>
                 <div className="steps-content">
-                    {steps[current].title === '选择商品分类'}
-                    {/* {steps} */}
-                    <RCascader></RCascader>
+                    {
+                        (() => {
+                            if (current === 0) {
+                                return <RCascader />
+                            } else if (current === 1) {
+                                return <RCascader />
+                            } else if (current === 2) {
+                                return <RCascader />
+                            } else if (current === 3) {
+                                return <RCascader />
+                            }
+                        })()
+                    }
                 </div>
                 <div className="steps-action">
                     {current > 0 && (
@@ -68,7 +78,7 @@ class GoodsSteps extends Component<any, any> {
                         </Button>
                     )}
                     {current === steps.length - 1 && (
-                        <Button type="primary" onClick={() => message.success('')}>
+                        <Button type="primary" onClick={() => message.success('已完成提交')}>
                             完成
                         </Button>
                     )}

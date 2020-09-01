@@ -10,9 +10,6 @@ class Goods extends Component {
                 <div>
                     <Steps />
                 </div>
-                <div className='goods-content'>
-
-                </div>
             </div>
         )
     }
