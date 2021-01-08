@@ -60,7 +60,7 @@ class GoodsSteps extends Component<any, any> {
                                 return <RCascader />
                             } else if (current === 2) {
                                 return <RCascader />
-                            } else if(current === 3) {
+                            } else if (current === 3) {
                                 return <RCascader />
                             }
                         })()
